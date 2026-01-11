@@ -36,6 +36,5 @@ async def send_game_card(bot: Bot, chat_id: int, game_data: tuple):
                 parse_mode="HTML",
                 disable_web_page_preview=False
             )
-        print(3)
     except Exception as e:
         logging.error(f"Error sending game to user {chat_id}: {e}")
