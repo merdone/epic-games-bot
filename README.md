@@ -1,8 +1,7 @@
 # 🎮 Epic Games Store Free Games Bot
-
 A fully asynchronous Telegram bot that monitors the **Epic Games Store** for free game giveaways 24/7.  
 It automatically fetches new offers and broadcasts notifications to subscribed users with game details, images, and promotion dates.
----
+
 ## ✨ Key Features
 - 🔄 **Automated Background Parsing**  
   Runs a background service that checks the Epic Games API every hour for new **100% discounted** games.
@@ -17,10 +16,8 @@ It automatically fetches new offers and broadcasts notifications to subscribed u
   Stores game history in the database to ensure users never receive the same notification twice.
 - ⚡ **Asynchronous Architecture**  
   Built with `asyncio` and **aiogram 3**, allowing the bot to handle user interactions and parsing simultaneously without blocking.
----
-
+  
 ## 📂 Project Structure
-
 The project follows a modular architecture for better maintainability:
 
 ```
@@ -40,9 +37,6 @@ epic_games_notifications/
 └── requirements.txt           # Python dependencies
 
 ````
-
----
-
 ## 🚀 Installation & Setup
 
 ### 1. Clone the repository
@@ -52,7 +46,6 @@ git clone https://github.com/merdone/epic-games-bot.git
 cd epic-games-bot
 ````
 
----
 
 ### 2. Set up a Virtual Environment
 
@@ -72,7 +65,6 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
----
 
 ### 3. Install Dependencies
 
@@ -80,7 +72,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
 
 ### 4. Configuration
 
@@ -91,7 +82,6 @@ BOT_TOKEN=your_telegram_bot_token_here
 DB_NAME=games  # Optional, defaults to 'games'
 ```
 
----
 
 ### 5. Run the Bot
 
@@ -106,7 +96,6 @@ INFO:root:Bot starting...
 INFO:root:Parser service started...
 ```
 
----
 
 ## ⚙️ How It Works
 
@@ -136,8 +125,7 @@ INFO:root:Parser service started...
 
   * If a game is new → saves it
   * Broadcasts the game card to all active users
-
----
+ 
 
 ## 🛠️ Tech Stack
 
@@ -146,5 +134,3 @@ INFO:root:Parser service started...
 * **Database:** SQLite3
 * **HTTP Client:** requests / aiohttp
 * **Scheduling:** asyncio
-
----
