@@ -14,6 +14,9 @@ async def parser_loop():
         tasks = [parser.parse() for parser in parsers]
         results = await asyncio.gather(*tasks, return_exceptions=True)
         for games in results:
+            if isinstance(games, Exception):
+                logging.error(f"Parser error: {games}")
+                continue
             try:
                 for game_info in games:
 
