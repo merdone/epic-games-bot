@@ -30,11 +30,20 @@ async def cmd_start(message: Message):
         reply_markup=subscribe_kb
     )
 
+@dp.message(Command("free"))
+async def send_current(message: Message):
+    active_games = db.get_active_games()
+    if active_games:
+        await message.answer("🔥 Currently free:")
+        for game in active_games:
+            await send_game_card(message.from_user.bot, message.from_user.id, game)
+    else:
+        await message.answer(
+            "Unfortunately, there are no active giveaways right now. But I'll let you know as soon as they appear!")
 
 @dp.callback_query(F.data == "sub_yes")
 async def process_subscribe(callback: CallbackQuery):
     user_id = callback.from_user.id
-
     db.add_user(user_id)
 
     await callback.message.edit_text(
