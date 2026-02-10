@@ -3,15 +3,15 @@ from typing import List, Dict
 
 class BaseParser(ABC):
     @abstractmethod
-    def get_discount_games(self) -> list:
+    async def get_discount_games(self) -> list:
         pass
 
     @abstractmethod
     def get_info_from_game(self, game_data: dict) -> dict | None:
         pass
 
-    def parse(self) -> List[Dict]:
-        active_games = self.get_discount_games()
+    async def parse(self) -> List[Dict]:
+        active_games = await self.get_discount_games()
         clean_games = []
 
         for game_data in active_games:

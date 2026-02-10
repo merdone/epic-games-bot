@@ -1,22 +1,20 @@
 from app.parsers.epicgames import EpicGamesParser
 import asyncio
-
 from app.bot.bot_utils import send_game_card
 import logging
 
-from app.loader import db, bot
+from app.loader import db, bot, CHECK_INTERVAL
 
-CHECK_INTERVAL = 60 * 60
 
 async def parser_loop():
     parsers = [
         EpicGamesParser()
     ]
     while True:
-        for parser in parsers:
+        tasks = [parser.parse() for parser in parsers]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        for games in results:
             try:
-                games = parser.parse()
-
                 for game_info in games:
 
                     game_id = game_info['game_id']

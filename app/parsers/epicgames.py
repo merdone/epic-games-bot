@@ -1,20 +1,16 @@
 from app.parsers.base_parser import BaseParser
-import requests
+import aiohttp
 from datetime import datetime
 
+from app.loader import epic_url
 
 class EpicGamesParser(BaseParser):
-    URL = "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions"
-
-    def get_discount_games(self) -> list:
+    async def get_discount_games(self) -> list:
         free_games = []
 
-        try:
-            request_result = requests.get(self.URL, timeout=10)
-            request_result.raise_for_status()
-            request_dict = request_result.json()
-        except (requests.RequestException, ValueError):
-            return []
+        async with aiohttp.ClientSession() as session:
+            async with session.get(epic_url) as response:
+                request_dict = await response.json()
 
         data = request_dict.get('data', {})
         if not data:
