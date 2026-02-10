@@ -4,31 +4,19 @@ A fully asynchronous Telegram bot that monitors the **Epic Games Store** for fre
 It automatically fetches new offers and broadcasts notifications to subscribed users with game details, images, and promotion dates.
 ---
 ## ✨ Key Features
-
 - 🔄 **Automated Background Parsing**  
   Runs a background service that checks the Epic Games API every hour for new **100% discounted** games.
-
-
 - 📢 **Instant Notifications**  
   Automatically broadcasts a message to all active subscribers as soon as a new game is found in the database.
-
-
 - 👤 **Subscription System**  
   Users can subscribe/unsubscribe via inline buttons.  
   The bot remembers users using an SQLite database.
-
-
 - 🖼️ **Rich Media Messages**  
   Sends beautifully formatted cards with the game cover, description, and **"Free Until"** dates using HTML parsing.
-
-
 - 🛡️ **Duplicate Prevention**  
   Stores game history in the database to ensure users never receive the same notification twice.
-
-
 - ⚡ **Asynchronous Architecture**  
   Built with `asyncio` and **aiogram 3**, allowing the bot to handle user interactions and parsing simultaneously without blocking.
-
 ---
 
 ## 📂 Project Structure
